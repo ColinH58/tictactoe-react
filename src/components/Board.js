@@ -67,7 +67,10 @@ const Board = () => {
             {renderSquare(7)}
             {renderSquare(8)}
             </div>
-            <h3>{ status }</h3>
+            <div>
+            <h3 className="status">{ status }</h3>
+            </div>
+            <button className="reset">Reset</button>
         </div>
     )
 }
