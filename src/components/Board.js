@@ -20,8 +20,8 @@ const Board = () => {
     const winner = calculateWinner(square);
         let status;
             if (winner) {
-                setTimeout(() => resetGame(), 4000);
-                status = `The Winner is: ${winner}`;
+                setTimeout(() => resetGame(), 3500);
+                status = `✨ The Winner is: ${winner} ✨`;
             } else {
                 status = 'Player Turn: ' + (X ? 'X' : 'O');
     };
