@@ -5,6 +5,7 @@ const Board = () => {
 
     const [square, setSquare] = useState(Array(9).fill(null));
     const [X, setX] = useState(true);
+    const initialState = Array(9).fill(null);
 
     const winner = calculateWinner(square);
     let status;
@@ -47,8 +48,12 @@ const Board = () => {
                 return squares[a];
             }
         }
-        return null;
-    }
+        return null
+    };
+
+    const resetGame = () => {
+        return setSquare(initialState);
+    };
 
     return (
         <div className="board">
@@ -70,7 +75,7 @@ const Board = () => {
             <div>
             <h3 className="status">{ status }</h3>
             </div>
-            <button className="reset">Reset</button>
+            <button className="reset" onClick={() => resetGame()}>Reset</button>
         </div>
     )
 }
