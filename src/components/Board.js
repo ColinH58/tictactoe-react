@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import { useState } from 'react';
 import Square from './Square';
 
 const Board = () => {
@@ -6,19 +6,23 @@ const Board = () => {
     const [square, setSquare] = useState(Array(9).fill(null));
     const [X, setX] = useState(true);
     const initialState = Array(9).fill(null);
-
-    const winner = calculateWinner(square);
-    let status;
-        if (winner) {
-            status = `Winner ${winner}`;
-        } else {
-            status = 'Player Turn: ' + (X ? 'X' : 'O');
-        };
+    
+    const resetGame = () => {
+        return setSquare(initialState);
+    };
 
     const renderSquare = (index) => {
         return (
             <Square value={square[index]} onClick={() => handleClick(index)} />
-        )};
+    )};
+
+    const winner = calculateWinner(square);
+        let status;
+            if (winner) {
+                status = `The Winner is: ${winner}`;
+            } else {
+                status = 'Player Turn: ' + (X ? 'X' : 'O');
+    };
 
     const handleClick = (index) => {
         const squares = square.slice();
@@ -29,7 +33,7 @@ const Board = () => {
             } else { 
                 alert("Please choose an open square!") 
             }
-        };
+    };
 
     function calculateWinner(squares) {
         const lines = [
@@ -49,10 +53,6 @@ const Board = () => {
             }
         }
         return null
-    };
-
-    const resetGame = () => {
-        return setSquare(initialState);
     };
 
     return (
