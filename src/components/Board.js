@@ -6,9 +6,10 @@ const Board = () => {
     const [square, setSquare] = useState(Array(9).fill(null));
     const [X, setX] = useState(true);
     const initialState = Array(9).fill(null);
-    
+
     const resetGame = () => {
-        return setSquare(initialState);
+        setSquare(initialState);
+        setX(true);
     };
 
     const renderSquare = (index) => {
@@ -19,6 +20,7 @@ const Board = () => {
     const winner = calculateWinner(square);
         let status;
             if (winner) {
+                setTimeout(() => resetGame(), 4000);
                 status = `The Winner is: ${winner}`;
             } else {
                 status = 'Player Turn: ' + (X ? 'X' : 'O');
